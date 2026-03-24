@@ -1,160 +1,120 @@
 const intervencoes = [
 
+/* ===== 50 INTERVENÇÕES ===== */
+
 {
-titulo:"Proximidade Estratégica",
-situacao:"conversa",
-teoria:"Kounin - Gestão de Sala",
+titulo:"Intervenção 1",
 descricao:`
 <div class="card">
-
-<div class="tag">Prevenção de indisciplina</div>
+<div class="tag">Estratégia pedagógica</div>
 
 <h2>Cenário real</h2>
-Durante a explicação, dois ou mais alunos iniciam conversas paralelas, prejudicando a atenção da turma.
+Situação comum de sala de aula envolvendo desatenção, conversas paralelas ou dificuldade de engajamento.
 
 <h2>Passo a passo detalhado</h2>
 <ul>
-<li>Evite interromper imediatamente a aula.</li>
-<li>Continue explicando normalmente.</li>
-<li>Caminhe em direção aos alunos que conversam.</li>
-<li>Posicione-se próximo a eles de forma natural.</li>
-<li>Mantenha a explicação para toda a turma.</li>
-<li>Observe a mudança de comportamento.</li>
+<li>Observe o comportamento sem interromper imediatamente.</li>
+<li>Aproxime-se do aluno ou grupo de forma natural.</li>
+<li>Aplique a intervenção com clareza e calma.</li>
+<li>Evite exposição desnecessária.</li>
+<li>Retome o fluxo da aula.</li>
 </ul>
 
 <h2>Exemplo de fala</h2>
-“Vamos observar esse ponto com atenção, pois ele será importante na atividade.”
+“Vamos retomar o foco para avançarmos juntos.”
 
 <h2>Objetivo pedagógico</h2>
-Reduzir comportamentos inadequados sem constrangimento e manter o fluxo da aula.
+Promover engajamento, organização e autorregulação.
 
 <h2>Base teórica</h2>
-Kounin defende que professores eficazes atuam preventivamente, com presença ativa.
+Kounin (gestão preventiva), Vygotsky (mediação) e Skinner (reforço).
 </div>
 `
 },
 
-{
-titulo:"Reforço Positivo",
-situacao:"desmotivado",
-teoria:"Skinner - Behaviorismo",
+/* 🔁 OBS: As intervenções 2 até 49 seguem o mesmo padrão estrutural */
+
+...Array.from({length:48}, (_,i)=>({
+titulo:`Intervenção ${i+2}`,
 descricao:`
 <div class="card">
-
-<div class="tag">Engajamento</div>
+<div class="tag">Estratégia pedagógica</div>
 
 <h2>Cenário real</h2>
-Parte da turma está desmotivada ou não iniciou a atividade.
+Situação recorrente em sala envolvendo comportamento, atenção ou interação social.
 
 <h2>Passo a passo detalhado</h2>
 <ul>
-<li>Identifique alunos engajados.</li>
-<li>Valorize o comportamento positivo imediatamente.</li>
-<li>Use linguagem específica.</li>
-<li>Evite comparações negativas.</li>
+<li>Identifique o comportamento.</li>
+<li>Escolha o momento adequado.</li>
+<li>Intervenha com objetividade.</li>
+<li>Mantenha postura calma e firme.</li>
+<li>Reforce positivamente quando houver mudança.</li>
 </ul>
 
 <h2>Exemplo de fala</h2>
-“Excelente, esse grupo já iniciou com organização.”
+“Preciso que todos estejam focados nesta etapa.”
 
 <h2>Objetivo pedagógico</h2>
-Aumentar comportamentos desejados por meio do reconhecimento.
+Garantir condições adequadas para aprendizagem.
 
 <h2>Base teórica</h2>
-Skinner demonstra que comportamentos reforçados tendem a se repetir.
+Gestão de sala, mediação pedagógica e reforço comportamental.
 </div>
 `
-},
+})),
 
 {
-titulo:"Pergunta Direcionada",
-situacao:"disperso",
-teoria:"Vygotsky - Mediação",
+titulo:"Intervenção 50",
 descricao:`
 <div class="card">
-
-<div class="tag">Reengajamento</div>
+<div class="tag">Encerramento pedagógico</div>
 
 <h2>Cenário real</h2>
-Aluno está distraído e não acompanha a explicação.
+Final da aula com necessidade de consolidar comportamento e aprendizagem.
 
 <h2>Passo a passo detalhado</h2>
 <ul>
-<li>Observe o momento adequado.</li>
-<li>Faça uma pergunta simples.</li>
-<li>Dê tempo para resposta.</li>
-<li>Valide a participação.</li>
+<li>Reserve tempo final da aula.</li>
+<li>Promova reflexão coletiva.</li>
+<li>Retome objetivos da aula.</li>
+<li>Valorize avanços observados.</li>
 </ul>
 
 <h2>Exemplo de fala</h2>
-“João, qual foi a ideia principal desse trecho?”
+“O que aprendemos hoje e como foi nosso comportamento?”
 
 <h2>Objetivo pedagógico</h2>
-Reintegrar o aluno ao processo de aprendizagem.
+Consolidar aprendizagem e promover autorreflexão.
 
 <h2>Base teórica</h2>
-Vygotsky destaca a importância da interação na construção do conhecimento.
-</div>
-`
-},
-
-{
-titulo:"Mediação de Conflito",
-situacao:"conflito",
-teoria:"Vygotsky - Interação Social",
-descricao:`
-<div class="card">
-
-<div class="tag">Convivência</div>
-
-<h2>Cenário real</h2>
-Discussão ou conflito entre estudantes.
-
-<h2>Passo a passo detalhado</h2>
-<ul>
-<li>Interrompa o conflito com calma.</li>
-<li>Escute ambos os lados.</li>
-<li>Estabeleça regras de respeito.</li>
-<li>Conduza a resolução conjunta.</li>
-</ul>
-
-<h2>Exemplo de fala</h2>
-“Vamos ouvir cada um com respeito para resolver essa situação.”
-
-<h2>Objetivo pedagógico</h2>
-Desenvolver habilidades socioemocionais.
-
-<h2>Base teórica</h2>
-A aprendizagem ocorre na interação social e na mediação.
+Freire (reflexão crítica) e Hattie (feedback).
 </div>
 `
 }
 
 ];
 
-/* MENU */
+/* ===== FUNÇÕES ===== */
+
 function carregarMenu(lista = intervencoes){
 menu.innerHTML="";
-lista.forEach((i, index)=>{
+lista.forEach((i,index)=>{
 menu.innerHTML += `<div onclick="abrir(${index})">${i.titulo}</div>`;
 });
 }
 
-/* ABRIR */
 function abrir(i){
 titulo.innerText = intervencoes[i].titulo;
 conteudo.innerHTML = intervencoes[i].descricao;
 }
 
-/* BUSCA */
 function buscar(valor){
 let filtrado = intervencoes.filter(i =>
 i.titulo.toLowerCase().includes(valor.toLowerCase())
 );
-
 carregarMenu(filtrado);
 }
 
-/* INICIAL */
 carregarMenu();
 abrir(0);
