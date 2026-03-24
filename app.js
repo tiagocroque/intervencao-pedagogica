@@ -1607,16 +1607,40 @@ const intervencoes = [
   }
 ];
 
-/* ===== BUSCA INTELIGENTE ===== */
+/* ==========================================
+   LÓGICA DE NAVEGAÇÃO DAS ABAS
+========================================== */
+function abrirAba(evt, idAba) {
+  // Esconde todos os conteúdos
+  const conteudos = document.getElementsByClassName("tab-content");
+  for (let i = 0; i < conteudos.length; i++) {
+    conteudos[i].style.display = "none";
+  }
+
+  // Remove a classe 'active' dos botões
+  const botoes = document.getElementsByClassName("tab-btn");
+  for (let i = 0; i < botoes.length; i++) {
+    botoes[i].className = botoes[i].className.replace(" active", "");
+  }
+
+  // Mostra a aba atual e marca o botão
+  const abaAtiva = document.getElementById(idAba);
+  // Se for a aba de intervenções, usa flex por causa da sidebar
+  abaAtiva.style.display = idAba === 'aba-intervencoes' ? "flex" : "block";
+  evt.currentTarget.className += " active";
+}
+
+/* ==========================================
+   BUSCA INTELIGENTE (Aba 1)
+========================================== */
 const menu = document.getElementById('menu');
 const tituloEl = document.getElementById('titulo');
 const conteudoEl = document.getElementById('conteudo');
 
 function carregarMenu(lista = intervencoes) {
-  if (!menu) return; // Garante que a div existe no HTML
+  if (!menu) return;
   menu.innerHTML = "";
   lista.forEach((item) => {
-    // Busca o index original para abrir o item correto mesmo durante uma pesquisa
     const originalIndex = intervencoes.indexOf(item);
     menu.innerHTML += `<div onclick="abrir(${originalIndex})">${item.titulo}</div>`;
   });
@@ -1638,8 +1662,101 @@ function buscar(termo) {
   carregarMenu(filtrados);
 }
 
-// Inicializa o sistema ao carregar a página
+/* ==========================================
+   CONTEÚDO: PRÁTICAS RESTAURATIVAS (Aba 2)
+========================================== */
+const htmlPraticas = `
+  <h1>Práticas Restaurativas e o Espírito de Família</h1>
+  <p>Na vivência Marista, a educação transcende a punição. A Justiça Restaurativa na escola é a aplicação direta do <strong>Espírito de Família</strong>: quando uma regra é quebrada, compreende-se que uma relação foi danificada e precisa ser reparada.</p>
+
+  <div class="card">
+    <div class="tag">Conceito Base</div>
+    <h2>Do Punitivo ao Restaurativo</h2>
+    <p>A mudança de paradigma exige que o educador troque perguntas punitivas por restaurativas:</p>
+    <ul>
+      <li><strong>Punitiva:</strong> "Quem fez isso? Qual regra foi quebrada? Qual é o castigo?"</li>
+      <li><strong>Restaurativa:</strong> "O que aconteceu? Quem foi afetado? O que precisa ser feito para reparar o dano?" (Zehr, Howard. <em>Trocando as Lentes</em>)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="tag">Conexão Prática</div>
+    <h2>Como as 50 Intervenções se Conectam aqui?</h2>
+    <p>Muitas das intervenções da Aba 1 já são eminentemente restaurativas. Exemplos práticos para a sala de aula:</p>
+    <ul>
+      <li><strong>Roda de Alinhamento (Intervenção 6):</strong> Ferramenta preventiva para tratar fofocas ou tensões no grupo antes que virem indisciplina grave.</li>
+      <li><strong>Mediação de Conflito (Intervenção 4):</strong> Escuta ativa de ambas as partes (vítima e ofensor) focando no dano material ou emocional, sem buscar um "vencedor".</li>
+      <li><strong>Contrato de Comportamento (Intervenção 5):</strong> Reflete o pilar restaurativo da <em>Co-responsabilidade</em>. Os alunos cumprem as regras porque as construíram, não por medo da autoridade.</li>
+    </ul>
+  </div>
+`;
+
+/* ==========================================
+   CONTEÚDO: CÍRCULOS RESTAURATIVOS (Aba 3)
+========================================== */
+const htmlCirculos = `
+  <h1>Círculos Restaurativos em Aulas de 48 Minutos</h1>
+  <p>O Círculo é a metodologia mais poderosa para exercer o valor Marista da <strong>Presença</strong>. Contudo, em aulas cronometradas, o formato exige objetividade extrema e condução assertiva de quem facilita (o professor).</p>
+
+  <div class="card orange-top">
+    <div class="tag">Metodologia</div>
+    <h2>A Estrutura do Círculo</h2>
+    <p>Baseado nos ensinamentos de Kay Pranis (<em>Processos Circulares</em>), todo círculo precisa de:</p>
+    <ul>
+      <li><strong>Peça da Fala (Bastão):</strong> Objeto central (estojo, bolinha). Apenas quem está com ele pode falar. Garante o silêncio e o respeito.</li>
+      <li><strong>Centro:</strong> Um ponto visual para onde os alunos podem olhar caso tenham vergonha do contato visual direto.</li>
+      <li><strong>Guardião (Facilitador):</strong> O professor atua garantindo que a Peça da Fala não estacione e que o tema não se perca.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="tag">Aplicação Rápida</div>
+    <h2>Roteiro para Círculo Expresso (Tempo: 15 a 20 min)</h2>
+    <p>Ideal para lidar com um conflito recente ou introduzir temas polêmicos de forma segura:</p>
+    <ol>
+      <li><strong>Check-in (Abertura - 3 min):</strong> <em>"Respondam em uma palavra: como o grupo está se sentindo hoje após o episódio de ontem?"</em> A peça gira rapidamente.</li>
+      <li><strong>Pergunta Geradora (Foco - 10 min):</strong> <em>"O que cada um de nós precisa se comprometer a fazer hoje para que este simulado funcione?"</em> A peça gira. Quem não quiser falar, passa adiante.</li>
+      <li><strong>Check-out (Fechamento - 2 min):</strong> <em>"O que você leva dessa nossa roda hoje?"</em></li>
+    </ol>
+  </div>
+`;
+
+/* ==========================================
+   CONTEÚDO: COMUNICAÇÃO NÃO VIOLENTA (Aba 4)
+========================================== */
+const htmlCNV = `
+  <h1>Comunicação Não Violenta (CNV) na Mediação</h1>
+  <p>A CNV, sistematizada por <strong>Marshall Rosenberg</strong>, é fundamental para mediar conflitos vividos no ambiente escolar. Ela ecoa o valor Marista da <strong>Simplicidade</strong>: ser direto, autêntico, empático, desarmando ataques e orgulhos.</p>
+
+  <div class="card">
+    <div class="tag">Os 4 Passos de Rosenberg</div>
+    <h2>Como Estruturar uma Fala Mediadora</h2>
+    <p>Sempre que precisar confrontar um aluno ou mediar dois alunos, a fala deve seguir o fluxo:</p>
+    <ul>
+      <li><strong>1. Observação (Fato sem julgamento):</strong> "Quando eu vejo que você amassou a prova do colega..." (Em vez de: "Você é muito agressivo").</li>
+      <li><strong>2. Sentimento:</strong> "...eu me sinto frustrado e preocupado com o clima da sala..."</li>
+      <li><strong>3. Necessidade:</strong> "...porque eu preciso de um ambiente onde todos tenham segurança para aprender."</li>
+      <li><strong>4. Pedido (Ação clara e positiva):</strong> "Você estaria disposto a pedir desculpas e ajudar a colar a folha?" (Em vez de: "Não faça mais isso").</li>
+    </ul>
+  </div>
+
+  <div class="card orange-top">
+    <div class="tag">Referencial Teórico Complementar</div>
+    <h2>Autores que Sustentam a Prática</h2>
+    <ul>
+      <li><strong>Dominic Barter (Sistemas Restaurativos):</strong> Traz a visão de que o conflito não é um erro, mas uma oportunidade de mudança sistêmica. O conflito é a forma trágica do aluno dizer que uma necessidade não está sendo atendida.</li>
+      <li><strong>Paulo Freire (Dialogismo):</strong> A CNV exige que o professor desça do pedestal de autoridade inquestionável para criar um diálogo horizontal. <em>"A educação é um ato de amor, por isso, um ato de coragem."</em></li>
+      <li><strong>Jane Nelsen (Disciplina Positiva):</strong> O aluno que apresenta mau comportamento é, na verdade, um aluno desencorajado. A conexão emocional (CNV) deve vir ANTES da correção pedagógica.</li>
+    </ul>
+  </div>
+`;
+
+// Injeta os conteúdos nas respectivas abas e inicializa
 window.onload = () => {
   carregarMenu();
   if (intervencoes.length > 0) abrir(0);
+  
+  document.getElementById('conteudo-praticas').innerHTML = htmlPraticas;
+  document.getElementById('conteudo-circulos').innerHTML = htmlCirculos;
+  document.getElementById('conteudo-cnv').innerHTML = htmlCNV;
 };
