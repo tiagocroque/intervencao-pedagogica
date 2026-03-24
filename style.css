@@ -1,69 +1,168 @@
-body{
-margin:0;
-font-family:Arial;
-display:flex;
-background:#f4f6f9;
+/* Paleta Institucional */
+:root {
+  --marista-blue: #003B71;
+  --marista-orange: #F2A900;
+  --marista-light-blue: #E6F0FF;
+  --bg-color: #F4F6F9;
+  --text-dark: #333333;
 }
 
-.sidebar{
-width:260px;
-background:#003B71;
-color:white;
-padding:20px;
-height:100vh;
-overflow:auto;
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-.sidebar input{
-width:100%;
-padding:8px;
-margin-bottom:15px;
-border:none;
-border-radius:5px;
+/* Cabeçalho e Abas */
+.marista-header {
+  background: var(--marista-blue);
+  color: white;
+  padding: 0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 10;
 }
 
-.sidebar div{
-margin-bottom:8px;
-cursor:pointer;
-padding:8px;
-border-radius:5px;
+.logo-container {
+  padding: 20px 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.sidebar div:hover{
-background:#0055a5;
+.marista-brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
 }
 
-.main{
-flex:1;
-padding:30px;
+.escola-name {
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--marista-orange);
+  margin-left: 8px;
 }
 
-.card{
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
-margin-bottom:20px;
+.tabs {
+  display: flex;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 0 20px;
 }
 
-h1{
-color:#003B71;
+.tab-btn {
+  background: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 24px;
+  transition: 0.3s;
+  font-size: 15px;
+  color: #ccc;
+  font-weight: 600;
+  border-bottom: 4px solid transparent;
 }
 
-h2{
-color:#003B71;
+.tab-btn:hover {
+  color: white;
+  background: rgba(255,255,255,0.1);
 }
 
-.section{
-margin-top:15px;
+.tab-btn.active {
+  color: white;
+  border-bottom: 4px solid var(--marista-orange);
+  background: transparent;
 }
 
-.tag{
-display:inline-block;
-background:#e6f0ff;
-color:#003B71;
-padding:5px 10px;
-border-radius:20px;
-font-size:12px;
-margin-bottom:10px;
+/* Estrutura Principal */
+.container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
 }
+
+.tab-content {
+  display: none; /* Escondido por padrão, o JS controla */
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar {
+  width: 280px;
+  background: white;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  color: var(--marista-blue);
+  margin-top: 0;
+}
+
+.sidebar input {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.sidebar div {
+  margin-bottom: 8px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  background: var(--bg-color);
+  border-left: 4px solid transparent;
+  transition: 0.2s;
+}
+
+.sidebar div:hover {
+  background: var(--marista-light-blue);
+  border-left: 4px solid var(--marista-blue);
+}
+
+.main {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.full-width {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Cartões de Conteúdo */
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 25px;
+  border-top: 4px solid var(--marista-blue);
+}
+
+.card.orange-top {
+  border-top: 4px solid var(--marista-orange);
+}
+
+h1 { color: var(--marista-blue); }
+h2 { color: var(--marista-blue); font-size: 1.3em;}
+h3 { color: #555; }
+
+.tag {
+  display: inline-block;
+  background: var(--marista-orange);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+ul { line-height: 1.6; }
+p { line-height: 1.6; }
